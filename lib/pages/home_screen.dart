@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/components/dialog_box.dart';
-import 'package:todo_list/components/todo_list.dart';
+import 'package:todo_list/components/task_cart.dart';
 import 'package:todo_list/database/data.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,7 +14,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   final _controller = TextEditingController();
 
   void onCheck(bool? value,int index){
@@ -22,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
       widget.db.todoList[index][1] = value;
     });
   }
-
+  
   void saveNewTask(){
     setState(() {
       widget.db.todoList.add([_controller.text,false]);
@@ -50,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
   }
-
+  
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: ListView.builder(
         itemCount: widget.db.todoList.length,
         itemBuilder: (context,index){
-            return TodoList(
+            return TaskCard(
               taskDescription: widget.db.todoList[index][0],
               isComplete: widget.db.todoList[index][1],
               deleteFunction: (context){

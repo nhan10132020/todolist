@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 // ignore: must_be_immutable
-class TodoList extends StatefulWidget {
+class TaskCard extends StatefulWidget {
 
-  late String taskDescription; 
-  late bool isComplete;
-  Function(BuildContext) deleteFunction;
-  Function(bool?) onCheckBox;
+  final String taskDescription; 
+  final bool isComplete;
+  final Function(BuildContext) deleteFunction;
+  final Function(bool?) onCheckBox;
 
-  TodoList({super.key, required this.taskDescription, required this.isComplete, required this.deleteFunction,required this.onCheckBox});
+  const TaskCard({super.key, required this.taskDescription, required this.isComplete, required this.deleteFunction,required this.onCheckBox});
 
   @override
-  State<TodoList> createState() => _TodoListState();
+  State<TaskCard> createState() => _TaskCardState();
 }
 
-class _TodoListState extends State<TodoList> {
+class _TaskCardState extends State<TaskCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(

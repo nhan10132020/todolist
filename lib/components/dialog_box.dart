@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class DialogBox extends StatelessWidget {
-  final controller;
-  void Function() onCancel; 
-  void Function() onSave;
+  final TextEditingController controller;
+  final void Function() onCancel; 
+  final void Function() onSave;
 
-  DialogBox({super.key,required this.onCancel,required this.onSave,required this.controller});
+  const DialogBox({super.key,required this.onCancel,required this.onSave,required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -38,14 +38,13 @@ class DialogBox extends StatelessWidget {
               children: [
                  MaterialButton(
                   color: Theme.of(context).primaryColor,
-                  onPressed: onSave,
-                  child: const Text("Save"),
-                 ),
-                 
-                 MaterialButton(
-                  color: Theme.of(context).primaryColor,
                   onPressed: onCancel,
                   child: const Text("Cancel"),
+                 ),
+                 MaterialButton(
+                  color: Theme.of(context).primaryColor,
+                  onPressed: onSave,
+                  child: const Text("Save"),
                  )
               ],
             )
